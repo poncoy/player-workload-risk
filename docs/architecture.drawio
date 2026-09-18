@@ -1,0 +1,82 @@
+<mxfile host="app.diagrams.net" modified="2026-09-18T00:00:00.000Z" agent="player-workload-risk" version="24.0.0" type="device">
+  <diagram name="Arquitectura" id="arch-workload-risk">
+    <mxGraphModel dx="1400" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1300" pageHeight="500" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Orchestration container -->
+        <mxCell id="orch" value="Airflow DAG: workload_risk_dag.py  (docker-compose, parametrizado por snapshot_date)" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;align=left;spacingLeft=8;spacingTop=6;dashed=1;fillColor=#F5F5F5;strokeColor=#666666;fontColor=#666666;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="280" y="40" width="780" height="300" as="geometry" />
+        </mxCell>
+
+        <!-- Sources -->
+        <mxCell id="src_gps" value="CSV Catapult&#10;(GPS pretemporada)&#10;PRIVADO — data/raw, gitignored" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="20" y="60" width="220" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="src_tm" value="Transfermarkt&#10;(scraping calendario Moquegua)&#10;PUBLICO, fragil" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="20" y="180" width="220" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="src_fd" value="football-data.org&#10;(API fixtures Brasileirao)&#10;PUBLICO, free tier" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="20" y="300" width="220" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Extract -->
+        <mxCell id="extract_gps" value="extract_gps.py&#10;filtra 'all', clasifica sesion,&#10;anonimiza jugador" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="320" y="60" width="220" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="extract_fx" value="extract_fixtures.py&#10;fetch API + scraping&#10;(con fallback a mock)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="320" y="240" width="220" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Transform -->
+        <mxCell id="transform" value="transform_metrics.py&#10;validate_gps_data()&#10;compute_acwr() (7d/28d)&#10;compute_congestion_index()&#10;build_risk_table()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="600" y="150" width="240" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- Load -->
+        <mxCell id="load" value="load_duckdb.py&#10;DuckDB local&#10;(sql/schema.sql)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="900" y="165" width="140" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- Serve -->
+        <mxCell id="serve_nb" value="notebooks/analisis_riesgo.ipynb&#10;tabla de riesgo + grafico ACWR" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="80" width="180" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="serve_bi" value="Power BI / cualquier&#10;cliente DuckDB" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="260" width="180" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Edges -->
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="src_gps" target="extract_gps">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="src_tm" target="extract_fx">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="src_fd" target="extract_fx">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="extract_gps" target="transform">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="extract_fx" target="transform">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="transform" target="load">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="load" target="serve_nb">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="load" target="serve_bi">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

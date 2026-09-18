@@ -25,6 +25,8 @@ propietaria (anonimizada) y una fuente publica.
 
 ## Arquitectura
 
+Version editable (draw.io / diagrams.net): [`docs/architecture.drawio`](docs/architecture.drawio).
+
 ```mermaid
 flowchart LR
     subgraph Extract
