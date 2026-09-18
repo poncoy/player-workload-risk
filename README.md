@@ -23,6 +23,32 @@ propietaria (anonimizada) y una fuente publica.
 - **Alerta combinada**: ACWR alto y semana de calendario congestionada al
   mismo tiempo.
 
+## Que entrega el notebook (`notebooks/analisis_riesgo.ipynb`)
+
+Un solo grafico de ranking no alcanza para uso real de cuerpo tecnico, asi
+que el notebook deja **7 vistas** aprovechando mas columnas del export
+Catapult (intensidad, impactos, aceleracion/desaceleracion maxima, ademas
+de las 5 metricas del alcance original):
+
+1. **Estado actual del plantel**: ultima sesion de cada jugador con
+   historia suficiente, carga aguda/cronica, ACWR y flag de riesgo.
+2. **Evolucion de ACWR en el tiempo**: curva completa (no solo el maximo)
+   de los jugadores que cruzaron zona de alerta temprana.
+3. **Heatmap de carga semanal** del plantel completo (jugador x semana):
+   sirve tanto para detectar sobrecarga como subcarga.
+4. **Perfil fisico**: volumen total acumulado vs. distancia de sprint —
+   dos senales genuinamente distintas (ver nota de calidad de dato abajo).
+5. **Carga mecanica**: outliers de impactos y frenadas/arranques por
+   z-score, independiente del ACWR.
+6. **Congestion de calendario**: Moquegua semana a semana vs. promedio
+   Brasileirao.
+7. **Resumen ejecutivo** generado dinamicamente con los numeros reales de
+   la corrida (no texto fijo).
+
+`data/processed/informe_riesgo.html` es el mismo notebook ya ejecutado,
+exportado como pagina web autocontenida — se abre en cualquier navegador,
+sin correr Python.
+
 ## Arquitectura
 
 Version editable (draw.io / diagrams.net): [`docs/architecture.drawio`](docs/architecture.drawio).
@@ -80,6 +106,16 @@ flowchart LR
 - `num_sprints` (mencionada como columna candidata antes de confirmar
   contra el archivo real) **no existe** en el export de Catapult usado. Se
   omite en vez de aproximarla con una metrica inventada.
+- Se agregaron 4 metricas mas del mismo export (no estaban en el alcance
+  original): `intensidad_m_min` (Distance Per Min), `impactos`,
+  `aceleracion_max` y `desaceleracion_max` — usadas en el notebook para
+  carga mecanica, algo que el ACWR por si solo no captura.
+- **Nota de calidad de dato**: `distancia_alta_velocidad_m` (zona 4-5 de
+  Catapult) resulto tener correlacion 0.9999998 con `distancia_sprint_m`
+  (metrica nativa de Catapult) — el club configuro el umbral de sprint
+  igual al piso de zona 4, asi que en este dataset son, en la practica, la
+  misma metrica. Se documenta para que no se presenten como dos senales
+  independientes en analisis futuros.
 
 ### Calendario CD Moquegua (scraping)
 

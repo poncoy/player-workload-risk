@@ -1,5 +1,5 @@
 {
-  "_mock_notice": "Fixture sintetico generado localmente (equipos reales, calendario programatico) para que el pipeline corra sin API key de football-data.org. NO es el fixture oficial 2026. Se reemplaza automaticamente por datos reales de la API en cuanto se configura FOOTBALL_DATA_API_KEY en .env.",
+  "_mock_notice": "Fixture sintetico generado localmente (equipos reales, espaciado variable inspirado en un calendario real de liga+copa: 6-8 dias entre fechas, algunas semanas dobles por copa, algunos parones FIFA) para que el pipeline corra sin API key de football-data.org. NO es el fixture oficial 2026. Se reemplaza automaticamente por datos reales de la API en cuanto se configura FOOTBALL_DATA_API_KEY en .env.",
   "competition": {
     "name": "Campeonato Brasileiro Série A",
     "code": "BSA"
@@ -39,7 +39,7 @@
     },
     {
       "id": 3,
-      "utcDate": "2026-04-26T21:00:00Z",
+      "utcDate": "2026-04-25T21:00:00Z",
       "status": "SCHEDULED",
       "matchday": 3,
       "competition": {
@@ -55,7 +55,7 @@
     },
     {
       "id": 4,
-      "utcDate": "2026-05-03T21:00:00Z",
+      "utcDate": "2026-05-02T21:00:00Z",
       "status": "SCHEDULED",
       "matchday": 4,
       "competition": {
@@ -71,7 +71,7 @@
     },
     {
       "id": 5,
-      "utcDate": "2026-05-10T21:00:00Z",
+      "utcDate": "2026-05-09T21:00:00Z",
       "status": "SCHEDULED",
       "matchday": 5,
       "competition": {
@@ -87,7 +87,7 @@
     },
     {
       "id": 6,
-      "utcDate": "2026-05-17T21:00:00Z",
+      "utcDate": "2026-05-13T21:00:00Z",
       "status": "SCHEDULED",
       "matchday": 6,
       "competition": {
@@ -103,7 +103,7 @@
     },
     {
       "id": 7,
-      "utcDate": "2026-05-24T21:00:00Z",
+      "utcDate": "2026-05-20T21:00:00Z",
       "status": "SCHEDULED",
       "matchday": 7,
       "competition": {
@@ -119,7 +119,7 @@
     },
     {
       "id": 8,
-      "utcDate": "2026-05-31T21:00:00Z",
+      "utcDate": "2026-05-28T21:00:00Z",
       "status": "SCHEDULED",
       "matchday": 8,
       "competition": {
@@ -135,7 +135,7 @@
     },
     {
       "id": 9,
-      "utcDate": "2026-06-07T21:00:00Z",
+      "utcDate": "2026-06-04T21:00:00Z",
       "status": "SCHEDULED",
       "matchday": 9,
       "competition": {
@@ -151,7 +151,7 @@
     },
     {
       "id": 10,
-      "utcDate": "2026-06-14T21:00:00Z",
+      "utcDate": "2026-06-11T21:00:00Z",
       "status": "SCHEDULED",
       "matchday": 10,
       "competition": {
@@ -167,7 +167,7 @@
     },
     {
       "id": 11,
-      "utcDate": "2026-06-21T21:00:00Z",
+      "utcDate": "2026-06-14T21:00:00Z",
       "status": "SCHEDULED",
       "matchday": 11,
       "competition": {
@@ -183,7 +183,7 @@
     },
     {
       "id": 12,
-      "utcDate": "2026-06-28T21:00:00Z",
+      "utcDate": "2026-06-21T21:00:00Z",
       "status": "SCHEDULED",
       "matchday": 12,
       "competition": {
@@ -199,7 +199,7 @@
     },
     {
       "id": 13,
-      "utcDate": "2026-07-05T21:00:00Z",
+      "utcDate": "2026-06-28T21:00:00Z",
       "status": "SCHEDULED",
       "matchday": 13,
       "competition": {
@@ -247,7 +247,7 @@
     },
     {
       "id": 16,
-      "utcDate": "2026-07-26T21:00:00Z",
+      "utcDate": "2026-07-25T21:00:00Z",
       "status": "SCHEDULED",
       "matchday": 16,
       "competition": {
@@ -263,7 +263,7 @@
     },
     {
       "id": 17,
-      "utcDate": "2026-08-02T21:00:00Z",
+      "utcDate": "2026-08-01T21:00:00Z",
       "status": "SCHEDULED",
       "matchday": 17,
       "competition": {
@@ -279,7 +279,7 @@
     },
     {
       "id": 18,
-      "utcDate": "2026-08-09T21:00:00Z",
+      "utcDate": "2026-08-08T21:00:00Z",
       "status": "SCHEDULED",
       "matchday": 18,
       "competition": {
@@ -295,7 +295,7 @@
     },
     {
       "id": 19,
-      "utcDate": "2026-08-16T21:00:00Z",
+      "utcDate": "2026-08-15T21:00:00Z",
       "status": "SCHEDULED",
       "matchday": 19,
       "competition": {
@@ -311,7 +311,7 @@
     },
     {
       "id": 20,
-      "utcDate": "2026-08-23T21:00:00Z",
+      "utcDate": "2026-08-22T21:00:00Z",
       "status": "SCHEDULED",
       "matchday": 20,
       "competition": {
