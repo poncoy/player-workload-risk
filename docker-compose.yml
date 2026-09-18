@@ -1,0 +1,64 @@
+x-airflow-env: &airflow-env
+  AIRFLOW__CORE__EXECUTOR: LocalExecutor
+  AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+  AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+  AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: "false"
+  # Instalado al levantar el contenedor: suficiente para una demo local,
+  # no recomendado para produccion (ahi se hornea una imagen custom).
+  _PIP_ADDITIONAL_REQUIREMENTS: "pandas duckdb requests beautifulsoup4 python-dotenv pyarrow matplotlib"
+  # Tomadas del .env del host si existe (docker compose lo lee solo); en
+  # blanco por defecto, en cuyo caso extract_fixtures.py cae a los mocks.
+  FOOTBALL_DATA_API_KEY: ${FOOTBALL_DATA_API_KEY:-}
+  FOOTBALL_DATA_COMPETITION: ${FOOTBALL_DATA_COMPETITION:-BSA}
+  FOOTBALL_DATA_SEASON: ${FOOTBALL_DATA_SEASON:-2026}
+  MOQUEGUA_FIXTURES_URL: ${MOQUEGUA_FIXTURES_URL:-https://www.transfermarkt.com/ucv-moquegua/spielplandatum/verein/114625}
+
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "airflow"]
+      interval: 5s
+      retries: 10
+
+  airflow-init:
+    image: apache/airflow:2.10.3-python3.11
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      <<: *airflow-env
+    entrypoint: /bin/bash
+    command: -c "airflow db migrate && airflow users create --username admin --password admin --firstname Paul --lastname Oncoy --role Admin --email admin@example.com"
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./src:/opt/airflow/src
+      - ./data:/opt/airflow/data
+      - ./sql:/opt/airflow/sql
+
+  airflow-standalone:
+    image: apache/airflow:2.10.3-python3.11
+    depends_on:
+      postgres:
+        condition: service_healthy
+      airflow-init:
+        condition: service_completed_successfully
+    environment:
+      <<: *airflow-env
+    command: standalone
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./src:/opt/airflow/src
+      - ./data:/opt/airflow/data
+      - ./sql:/opt/airflow/sql
+
+volumes:
+  postgres-data:
