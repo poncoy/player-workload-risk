@@ -1,0 +1,329 @@
+{
+  "_mock_notice": "Fixture sintetico generado localmente (equipos reales, calendario programatico) para que el pipeline corra sin API key de football-data.org. NO es el fixture oficial 2026. Se reemplaza automaticamente por datos reales de la API en cuanto se configura FOOTBALL_DATA_API_KEY en .env.",
+  "competition": {
+    "name": "Campeonato Brasileiro Série A",
+    "code": "BSA"
+  },
+  "matches": [
+    {
+      "id": 1,
+      "utcDate": "2026-04-12T21:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 1,
+      "competition": {
+        "name": "Campeonato Brasileiro Série A",
+        "code": "BSA"
+      },
+      "homeTeam": {
+        "name": "Flamengo"
+      },
+      "awayTeam": {
+        "name": "Palmeiras"
+      }
+    },
+    {
+      "id": 2,
+      "utcDate": "2026-04-19T21:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 2,
+      "competition": {
+        "name": "Campeonato Brasileiro Série A",
+        "code": "BSA"
+      },
+      "homeTeam": {
+        "name": "Palmeiras"
+      },
+      "awayTeam": {
+        "name": "Sao Paulo"
+      }
+    },
+    {
+      "id": 3,
+      "utcDate": "2026-04-26T21:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 3,
+      "competition": {
+        "name": "Campeonato Brasileiro Série A",
+        "code": "BSA"
+      },
+      "homeTeam": {
+        "name": "Sao Paulo"
+      },
+      "awayTeam": {
+        "name": "Corinthians"
+      }
+    },
+    {
+      "id": 4,
+      "utcDate": "2026-05-03T21:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 4,
+      "competition": {
+        "name": "Campeonato Brasileiro Série A",
+        "code": "BSA"
+      },
+      "homeTeam": {
+        "name": "Corinthians"
+      },
+      "awayTeam": {
+        "name": "Fluminense"
+      }
+    },
+    {
+      "id": 5,
+      "utcDate": "2026-05-10T21:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 5,
+      "competition": {
+        "name": "Campeonato Brasileiro Série A",
+        "code": "BSA"
+      },
+      "homeTeam": {
+        "name": "Fluminense"
+      },
+      "awayTeam": {
+        "name": "Botafogo"
+      }
+    },
+    {
+      "id": 6,
+      "utcDate": "2026-05-17T21:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 6,
+      "competition": {
+        "name": "Campeonato Brasileiro Série A",
+        "code": "BSA"
+      },
+      "homeTeam": {
+        "name": "Botafogo"
+      },
+      "awayTeam": {
+        "name": "Gremio"
+      }
+    },
+    {
+      "id": 7,
+      "utcDate": "2026-05-24T21:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 7,
+      "competition": {
+        "name": "Campeonato Brasileiro Série A",
+        "code": "BSA"
+      },
+      "homeTeam": {
+        "name": "Gremio"
+      },
+      "awayTeam": {
+        "name": "Internacional"
+      }
+    },
+    {
+      "id": 8,
+      "utcDate": "2026-05-31T21:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 8,
+      "competition": {
+        "name": "Campeonato Brasileiro Série A",
+        "code": "BSA"
+      },
+      "homeTeam": {
+        "name": "Internacional"
+      },
+      "awayTeam": {
+        "name": "Atletico Mineiro"
+      }
+    },
+    {
+      "id": 9,
+      "utcDate": "2026-06-07T21:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 9,
+      "competition": {
+        "name": "Campeonato Brasileiro Série A",
+        "code": "BSA"
+      },
+      "homeTeam": {
+        "name": "Atletico Mineiro"
+      },
+      "awayTeam": {
+        "name": "Cruzeiro"
+      }
+    },
+    {
+      "id": 10,
+      "utcDate": "2026-06-14T21:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 10,
+      "competition": {
+        "name": "Campeonato Brasileiro Série A",
+        "code": "BSA"
+      },
+      "homeTeam": {
+        "name": "Cruzeiro"
+      },
+      "awayTeam": {
+        "name": "Bahia"
+      }
+    },
+    {
+      "id": 11,
+      "utcDate": "2026-06-21T21:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 11,
+      "competition": {
+        "name": "Campeonato Brasileiro Série A",
+        "code": "BSA"
+      },
+      "homeTeam": {
+        "name": "Bahia"
+      },
+      "awayTeam": {
+        "name": "Vasco da Gama"
+      }
+    },
+    {
+      "id": 12,
+      "utcDate": "2026-06-28T21:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 12,
+      "competition": {
+        "name": "Campeonato Brasileiro Série A",
+        "code": "BSA"
+      },
+      "homeTeam": {
+        "name": "Vasco da Gama"
+      },
+      "awayTeam": {
+        "name": "Santos"
+      }
+    },
+    {
+      "id": 13,
+      "utcDate": "2026-07-05T21:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 13,
+      "competition": {
+        "name": "Campeonato Brasileiro Série A",
+        "code": "BSA"
+      },
+      "homeTeam": {
+        "name": "Santos"
+      },
+      "awayTeam": {
+        "name": "Fortaleza"
+      }
+    },
+    {
+      "id": 14,
+      "utcDate": "2026-07-12T21:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 14,
+      "competition": {
+        "name": "Campeonato Brasileiro Série A",
+        "code": "BSA"
+      },
+      "homeTeam": {
+        "name": "Fortaleza"
+      },
+      "awayTeam": {
+        "name": "Bragantino"
+      }
+    },
+    {
+      "id": 15,
+      "utcDate": "2026-07-19T21:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 15,
+      "competition": {
+        "name": "Campeonato Brasileiro Série A",
+        "code": "BSA"
+      },
+      "homeTeam": {
+        "name": "Bragantino"
+      },
+      "awayTeam": {
+        "name": "Cuiaba"
+      }
+    },
+    {
+      "id": 16,
+      "utcDate": "2026-07-26T21:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 16,
+      "competition": {
+        "name": "Campeonato Brasileiro Série A",
+        "code": "BSA"
+      },
+      "homeTeam": {
+        "name": "Cuiaba"
+      },
+      "awayTeam": {
+        "name": "Criciuma"
+      }
+    },
+    {
+      "id": 17,
+      "utcDate": "2026-08-02T21:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 17,
+      "competition": {
+        "name": "Campeonato Brasileiro Série A",
+        "code": "BSA"
+      },
+      "homeTeam": {
+        "name": "Criciuma"
+      },
+      "awayTeam": {
+        "name": "Juventude"
+      }
+    },
+    {
+      "id": 18,
+      "utcDate": "2026-08-09T21:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 18,
+      "competition": {
+        "name": "Campeonato Brasileiro Série A",
+        "code": "BSA"
+      },
+      "homeTeam": {
+        "name": "Juventude"
+      },
+      "awayTeam": {
+        "name": "Athletico Paranaense"
+      }
+    },
+    {
+      "id": 19,
+      "utcDate": "2026-08-16T21:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 19,
+      "competition": {
+        "name": "Campeonato Brasileiro Série A",
+        "code": "BSA"
+      },
+      "homeTeam": {
+        "name": "Athletico Paranaense"
+      },
+      "awayTeam": {
+        "name": "Vitoria"
+      }
+    },
+    {
+      "id": 20,
+      "utcDate": "2026-08-23T21:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 20,
+      "competition": {
+        "name": "Campeonato Brasileiro Série A",
+        "code": "BSA"
+      },
+      "homeTeam": {
+        "name": "Vitoria"
+      },
+      "awayTeam": {
+        "name": "Flamengo"
+      }
+    }
+  ]
+}
