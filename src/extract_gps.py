@@ -175,11 +175,20 @@ def extract_session_file(path: Path) -> pd.DataFrame:
     return df[keep]
 
 
-def extract_all(raw_dir: Path = DATA_RAW_DIR, only_training: bool = True) -> pd.DataFrame:
+def extract_all(raw_dir: Path = DATA_RAW_DIR, only_training: bool = False) -> pd.DataFrame:
     """Lee todos los CSV de raw_dir, anonimiza y consolida en un solo dataset
-    jugador-sesion. Con only_training=True (default) descarta amistosos y
-    partidos oficiales, ya que la carga de entrenamiento es la que define el
-    riesgo de sobrecarga en pretemporada.
+    jugador-sesion.
+
+    Por defecto (only_training=False) se conservan TODAS las sesiones
+    (entrenamiento + amistoso + oficial): el ACWR debe calcularse sobre la
+    carga fisica real completa, y el partido es tipicamente la sesion de
+    mayor carga de la semana -- excluirlo subestima justo el momento de
+    mayor riesgo. session_type queda como columna para poder explicar un
+    pico de carga ("este salto de ACWR coincide con el partido del 02/02").
+    only_training=True existe por si se necesita replicar el alcance de
+    otro analisis (ej. un clasificador de carga *planificada* de
+    entrenamiento, donde el partido no aplica), pero no es el default para
+    el calculo de riesgo de este proyecto.
     """
     csv_files = sorted(raw_dir.glob("*.csv"))
     if not csv_files:

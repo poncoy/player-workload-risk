@@ -14,7 +14,14 @@ propietaria (anonimizada) y una fuente publica.
 
 - **ACWR** (Acute:Chronic Workload Ratio) por jugador: carga aguda (media
   movil 7 dias) sobre carga cronica (media movil 28 dias), calculado sobre
-  `player_load`. Flag de riesgo si `ACWR > 1.5`.
+  `player_load`. Flag de riesgo si `ACWR > 1.5`. Se calcula sobre **todas
+  las sesiones con GPS** (entrenamiento + amistoso + oficial), no solo
+  entrenamientos: el partido es tipicamente la sesion de mayor carga de la
+  semana, y excluirlo del ACWR subestima el momento de mayor riesgo real.
+  `session_type` queda visible en `gps_metrics` para poder explicar un pico
+  ("este salto de ACWR coincide con el partido del 02/02"). *(Version
+  anterior de este pipeline filtraba solo entrenamientos por arrastre de un
+  criterio de otro proyecto donde si aplicaba — corregido.)*
 - **Indice de congestion de calendario**, semanal y normalizado [0, 1], a
   partir de partidos por semana y descanso minimo previo. Se calcula igual
   para CD Moquegua y para el Brasileirao — el Brasileirao **no aporta datos
@@ -232,6 +239,14 @@ player-workload-risk/
   como dos codigos distintos, y su historial de ACWR se reinicia. No hay
   forma de resolver esto sin un maestro de roster del club, que no existe
   en los datos disponibles.
+- **El amistoso (S40) y el oficial (S46) solo tienen GPS de jugadores de la
+  segunda ventana de roster** (`Jugador_31` en adelante): por eso incluir
+  esas 42 filas de partido en el ACWR no cambia el jugador senalado como
+  riesgo en esta corrida puntual (sigue siendo `Jugador_30`, de la primera
+  ventana) — esos jugadores de partido todavia no llegan a los 28 dias de
+  historia continua. El fix es correcto y necesario igual: importa mas en
+  cuanto haya un dataset de temporada completa, no cortado en la frontera
+  del cambio de roster.
 - **`alerta_combinada` puede no activarse en este snapshot especifico**: la
   Liga 1 Apertura arranca el 02/02/2026, justo despues del ultimo
   entrenamiento analizado, por lo que las semanas de entrenamiento no se
