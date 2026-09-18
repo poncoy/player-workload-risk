@@ -1,0 +1,34 @@
+# Datos crudos y sensibles — NUNCA se commitean
+data/raw/
+data/mapping/
+data/processed/
+*.duckdb
+*.duckdb.wal
+
+# Secretos
+.env
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Airflow local
+logs/
+airflow.cfg
+airflow.db
+standalone_admin_password.txt
+
+# OS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
