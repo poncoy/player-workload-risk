@@ -27,6 +27,12 @@ logger = get_logger(__name__)
 EXCEL_EPOCH = dt.date(1899, 12, 30)
 
 # Columnas del export Catapult -> nombre de negocio usado aguas abajo.
+# Ademas de las 5 metricas del alcance original (distancia, sprint, player
+# load, velocidad), se suman 4 mas del mismo export que ya estaban en las
+# 100 columnas y aportan valor practico para el cuerpo tecnico: intensidad
+# de la sesion, impactos totales (carga mecanica) y aceleracion/
+# desaceleracion maxima (frenadas y arranques, tipicos de sobrecarga en
+# tejido blando).
 COLUMN_MAP = {
     "Player Name": "jugador_raw",
     "Date": "fecha_serial",
@@ -37,6 +43,10 @@ COLUMN_MAP = {
     "Top Speed (km/h)": "velocidad_max_kmh",
     "Distance in Speed Zone 4  (km)": "dist_zona4_km",
     "Distance in Speed Zone 5  (km)": "dist_zona5_km",
+    "Distance Per Min (m/min)": "intensidad_m_min",
+    "Impacts": "impactos",
+    "Max Acceleration (m/s/s)": "aceleracion_max",
+    "Max Deceleration (m/s/s)": "desaceleracion_max",
 }
 
 OFFICIAL_MARKERS = ("LIGA1", "APERTURA", "CLAUSURA", "COPA")
@@ -137,6 +147,12 @@ def extract_session_file(path: Path) -> pd.DataFrame:
     zona5 = df["dist_zona5_km"] if "dist_zona5_km" in df else 0.0
     # Alta velocidad = distancia recorrida en zonas de velocidad 4-5 (umbral
     # de zona definido por el club en Catapult, no expuesto en el export).
+    # OJO: en este export, zona4+zona5 coincide casi exacto (corr=0.9999998)
+    # con 'Sprint Distance' nativa de Catapult -> el club configuro el
+    # umbral de sprint igual al piso de zona 4. Son, en la practica, la
+    # misma metrica. Se conserva distancia_alta_velocidad_m por si el club
+    # reconfigura las zonas en el futuro, pero no se debe tratar como una
+    # senal independiente de distancia_sprint_m mientras esto siga asi.
     df["distancia_alta_velocidad_m"] = (zona4 + zona5) * 1000.0
 
     keep = [
@@ -150,6 +166,10 @@ def extract_session_file(path: Path) -> pd.DataFrame:
         "distancia_sprint_m",
         "player_load",
         "velocidad_max_kmh",
+        "intensidad_m_min",
+        "impactos",
+        "aceleracion_max",
+        "desaceleracion_max",
     ]
     keep = [c for c in keep if c in df.columns]
     return df[keep]

@@ -13,6 +13,10 @@ CREATE TABLE IF NOT EXISTS gps_metrics (
     distancia_sprint_m    DOUBLE,
     player_load           DOUBLE,
     velocidad_max_kmh     DOUBLE,
+    intensidad_m_min      DOUBLE,   -- Distance Per Min: metros/minuto, intensidad de la sesion
+    impactos              INTEGER,  -- carga mecanica (colisiones/choques detectados por el chaleco)
+    aceleracion_max       DOUBLE,   -- m/s/s, arranques
+    desaceleracion_max    DOUBLE,   -- m/s/s, frenadas (asociadas a sobrecarga de tejido blando)
     dato_valido           BOOLEAN
 );
 
